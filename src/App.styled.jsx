@@ -8,13 +8,21 @@ export const Section = styled.section`
 export const Title = styled.h2`
   text-align: center;
   font-size: 40px;
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
 `;
 
 export const Box = styled.div`
   display: flex;
-  height: 100%;
   justify-content: center;
   padding-top: 25px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const Card = styled.div`
@@ -26,14 +34,22 @@ export const Card = styled.div`
   background-color: #f5fbfb;
   padding: 20px;
   transition: transform 1s;
-  :hover {
-    transform: scale(1.05);
-    box-shadow: 0px 2px 15px -2px;
-    border: 2px solid #5de17a;
-    z-index: 1;
-    Button {
-      background-color: #87f287;
-      border: none;
+  margin: 10px auto;
+  @media (min-width: 768px) {
+    margin: 10px;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 0;
+    :hover {
+      transform: scale(1.05);
+      box-shadow: 0px 2px 15px -2px;
+      border: 2px solid #5de17a;
+      z-index: 1;
+      Button {
+        background-color: #87f287;
+        border: none;
+      }
     }
   }
 `;
