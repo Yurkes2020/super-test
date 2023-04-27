@@ -1,24 +1,129 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  Section,
+  Title,
+  Box,
+  Card,
+  Plan,
+  Dollar,
+  Price,
+  Period,
+  List,
+  Item,
+  Button,
+  Rotate,
+  Text,
+  Link,
+} from './App.styled';
+
+import { BsCheckCircle } from 'react-icons/bs';
 
 function App() {
+  const style = { color: 'green', marginRight: '10px' };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Section>
+      <Title>Google Chrome Extension Plans</Title>
+
+      <Box>
+        <Card>
+          <Plan>Free</Plan>
+          <Dollar>$</Dollar>
+          <Price>0</Price>
+          <Period>/mo</Period>
+          <List>
+            <Item>
+              <BsCheckCircle style={style} />
+              Word Definitions
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Up to 10 Lists
+            </Item>
+          </List>
+          <Button>
+            <Link href="https://boostvocab.com/register">Sign up today</Link>
+          </Button>
+        </Card>
+        <Card>
+          <Plan>Monthly</Plan>
+          <Dollar>$</Dollar>
+          <Price>3.99</Price>
+          <Period>/mo</Period>
+          <List>
+            <Item>
+              <BsCheckCircle style={style} />
+              Word Definitions
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Unlimited Lists
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Directly add words from any site using Chrome Extension
+            </Item>
+          </List>
+          <Button>
+            <a target="new" href="https://buy.stripe.com/5kAdRpbLh3k71RS6oo">
+              Sign up today
+            </a>
+          </Button>
+        </Card>
+        <Card>
+          <Plan>Yearly</Plan>
+          <Dollar>$</Dollar>
+          <Price>29.99</Price>
+          <Period>/year</Period>
+          <List>
+            <Item>
+              <BsCheckCircle style={style} />
+              Word Definitions
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Unlimited Lists
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Directly add words from any site using Chrome Extension
+            </Item>
+          </List>
+          <Button>
+            <a target="new" href="https://buy.stripe.com/aEU6oX3eL6wjdAA7st">
+              Sign up today
+            </a>
+          </Button>
+          <Rotate>
+            <Text>POPULAR</Text>
+          </Rotate>
+        </Card>
+        <Card>
+          <Plan>Lifetime</Plan>
+          <Dollar>$</Dollar>
+          <Price>99</Price>
+          <Period>one time</Period>
+          <List>
+            <Item>
+              <BsCheckCircle style={style} />
+              Word Definitions
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Unlimited Lists
+            </Item>
+            <Item>
+              <BsCheckCircle style={style} />
+              Directly add words from any site using Chrome Extension
+            </Item>
+          </List>
+          <Button>
+            <a target="new" href="https://buy.stripe.com/4gwfZxbLh8Er54428a">
+              Sign up today
+            </a>
+          </Button>
+        </Card>
+      </Box>
+    </Section>
   );
 }
 
