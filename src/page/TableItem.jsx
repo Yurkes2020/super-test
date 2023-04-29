@@ -7,7 +7,10 @@ export const Element = ({ user, onDelete, setUser, users }) => {
 
   const onEdit = (id) => {
     setShow(false);
-    document.getElementsByName(id).forEach((item) => (item.disabled = false));
+    document.getElementsByName(id).forEach((item) => {
+      item.style.backgroundColor = '#00ffff';
+      item.disabled = false;
+    });
   };
 
   const onChange = (e) => {
@@ -34,7 +37,10 @@ export const Element = ({ user, onDelete, setUser, users }) => {
       }
       return item;
     });
-    document.getElementsByName(id).forEach((item) => (item.disabled = true));
+    document.getElementsByName(id).forEach((item) => {
+      item.style.backgroundColor = 'inherit';
+      item.disabled = true;
+    });
     setUser(newArr);
     setShow(true);
   };
