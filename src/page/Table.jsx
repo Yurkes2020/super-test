@@ -8,6 +8,7 @@ export const Users = () => {
   const [users, setUsers] = useState(() => {
     return JSON.parse(window.localStorage.getItem('users')) ?? [];
   });
+  const [sort, setSort] = useState(false);
 
   useEffect(() => {
     window.localStorage.setItem('users', JSON.stringify(users));
@@ -16,10 +17,10 @@ export const Users = () => {
   const NewUser = (e) => {
     e.preventDefault();
     const form = e.currentTarget.elements;
-    const id = form.id.value;
+    const id = Number(form.id.value);
     const name = form.name.value;
     const email = form.email.value;
-    const age = form.age.value;
+    const age = Number(form.age.value);
     setUsers((prev) => [...prev, { id, name, email, age }]);
     e.currentTarget.reset();
   };
@@ -28,11 +29,26 @@ export const Users = () => {
     setUsers(users.filter((user) => user.id !== id));
   };
 
-  const onSort = () => {
-    const sort = users.sort((a, b) => a.id - b.id);
-    setUsers(sort);
+  const onSort = (i) => {
+    const sortUser = [...users].sort((a, b) => {
+      if (sort) {
+        if (typeof a[i] === 'string') {
+          setSort(!sort);
+          return b[i].localeCompare(a[i]);
+        }
+        setSort(!sort);
+        return b[i] - a[i];
+      }
+      if (typeof a[i] === 'string') {
+        setSort(!sort);
+        return a[i].localeCompare(b[i]);
+      }
+      setSort(!sort);
+      return a[i] - b[i];
+    });
+    setUsers(sortUser);
   };
-  console.log(users);
+
   return (
     <Section>
       <form onSubmit={NewUser}>
@@ -59,25 +75,25 @@ export const Users = () => {
           <Tr>
             <Th>
               ID
-              <Sort onClick={onSort}>
+              <Sort onClick={() => onSort('id')}>
                 <BiSortAlt2 />
               </Sort>
             </Th>
             <Th>
               NAME
-              <Sort>
+              <Sort onClick={() => onSort('name')}>
                 <BiSortAlt2 />
               </Sort>
             </Th>
             <Th>
               EMAIL
-              <Sort>
+              <Sort onClick={() => onSort('email')}>
                 <BiSortAlt2 />
               </Sort>
             </Th>
             <Th>
               AGE
-              <Sort>
+              <Sort onClick={() => onSort('age')}>
                 <BiSortAlt2 />
               </Sort>
             </Th>

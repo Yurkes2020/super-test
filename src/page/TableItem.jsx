@@ -34,7 +34,7 @@ export const Element = ({ user, onDelete, setUser, users }) => {
       }
       return item;
     });
-
+    document.getElementsByName(id).forEach((item) => (item.disabled = true));
     setUser(newArr);
     setShow(true);
   };
